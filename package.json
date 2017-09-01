@@ -1,6 +1,6 @@
 {
   "name": "background-functions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Execute CPU intensive code asynchronously in child processes Edit",
   "main": "index.js",
   "scripts": {},
