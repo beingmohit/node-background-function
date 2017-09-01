@@ -27,6 +27,23 @@ var Workers = new WorkersMaster({
     threads: 2 // Defaults to number of CPU's
 });
 
+// Example 1
+var exampleTask = Workers.task(function(n) {
+    for (var i = 0; i < n; ++i)
+    {
+        // Any CPU intensive task
+    }
+    
+    return 'Hello';
+});
+
+exampleTask(10000000).then(function(result) {
+    console.log(result); // Output: Hello
+});
+
+
+// Example 2
+ 
 var fibo = Workers.task(function(n) {
     debug('task')('task executing', n); // `debug` injected
     
@@ -41,8 +58,8 @@ var fibo = Workers.task(function(n) {
 });
 
 // `Workers.task` always returns Promise
-fibo(50).then(function(result) {
-    console.log('fibo(50) = ', result);
+fibo(40).then(function(result) {
+    console.log('fibo(40) = ', result);
 });
 ```
 
@@ -52,9 +69,8 @@ fibo(50).then(function(result) {
 - makes sense only when overhead of IPC and serialisation is much less than code execution.
 
 #### Alternatives?
-- [Webworker Threads](https://www.npmjs.com/package/webworker-threads) (does not support dependency injection)
-- [AsyncTask](https://github.com/gorillatron/async-task) (does not support dependency injection)
-
+- [Webworker Threads](https://www.npmjs.com/package/webworker-threads) 
+- [AsyncTask](https://github.com/gorillatron/async-task) 
 #### How does it work? 
 It creates nodejs child processes and sends them serialised functions using IPC. When functions are called it sends json serialised function arguments to one of the thread in round robin fasion and returns a promise.
 

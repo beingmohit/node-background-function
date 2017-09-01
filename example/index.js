@@ -1,5 +1,6 @@
 const WorkersMaster = require('../index');
 
+
 var Workers = new WorkersMaster({
     requires: { 
         debug: 'debug' // Inject dependencies (npm modules) 
@@ -7,6 +8,23 @@ var Workers = new WorkersMaster({
     threads: 2 // Defaults to number of CPU's
 });
 
+// Example 1
+var exampleTask = Workers.task(function(n) {
+    for (var i = 0; i < n; ++i)
+    {
+        // Any CPU intensive task
+    }
+    
+    return 'Hello';
+});
+
+exampleTask(10000000).then(function(result) {
+    console.log(result); // Output: Hello
+});
+
+
+// Example 2
+ 
 var fibo = Workers.task(function(n) {
     debug('task')('task executing', n); // `debug` injected
     
