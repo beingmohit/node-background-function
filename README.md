@@ -14,6 +14,10 @@ Both the event loop and said listeners and callbacks run sequentially in a singl
 #### How?
 
 ```
+npm install background-functions --save
+```
+
+```
 const WorkersMaster = require('background-functions');
 
 var Workers = new WorkersMaster({
