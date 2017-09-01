@@ -1,0 +1,34 @@
+{
+  "name": "node-background-functions",
+  "version": "1.0.0",
+  "description": "Execute CPU intensive code asynchronously in child processes Edit",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beingmohit/node-background-functions.git"
+  },
+  "keywords": [
+    "nodejs",
+    "background",
+    "async",
+    "tasks",
+    "workers",
+    "cpu",
+    "process",
+    "webworker"
+  ],
+  "author": "Mohit Agrawal <beingmohit09@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beingmohit/node-background-functions/issues"
+  },
+  "homepage": "https://github.com/beingmohit/node-background-functions#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "debug": "^3.0.1",
+    "funcster": "0.0.3",
+    "uuid": "^3.1.0"
+  }
+}
