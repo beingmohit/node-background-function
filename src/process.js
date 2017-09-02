@@ -24,7 +24,11 @@ function execute(data) {
     try {
         debug('executing function', data.func, data.arg);
         var func = functions[data.func];
-        var arg = data.arg.concat(func.context);
+        var arg = [...func.context];
+
+        for (let i = 0; i < data.arg.length; i++)
+            arg[i] = data.arg[i];
+
         var result = func.script.apply(null, arg);
     
         if (result.constructor.name != 'Promise')
@@ -54,7 +58,7 @@ function sendError(error) {
 function operateFunction(func, requires) {
     var params = getParamNames(func);
     var body = getFunctionBody(func);
-    var context = [];
+    var context = new Array(params.length);
     
     for (var key in requires || {}) {
         params.push(key);
@@ -72,7 +76,6 @@ function operateFunction(func, requires) {
         context: context
     }
 }
-
 
 function getParamNames(func) {
     var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
